@@ -1,10 +1,18 @@
 import { Server } from './server'
 import 'reflect-metadata';
-import './database/mysql';
+import { createConnection } from "typeorm";
 
-function main() {
+createConnection().then(async connection =>{
   const server = new Server(3000);
   server.listen();
-}
+}).catch(error => console.log(error));
 
-main();
+
+// import './database/mysql';
+
+// function main() {
+//   const server = new Server(3000);
+//   server.listen();
+// }
+
+// main();
